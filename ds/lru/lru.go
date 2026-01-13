@@ -1,4 +1,4 @@
-package main
+package lru
 
 import "fmt"
 
@@ -89,30 +89,4 @@ func (this *LRUCache) printList() {
 		curr = curr.Next
 	}
 	fmt.Println("END")
-}
-
-func main() {
-	fmt.Println("启动LRU缓存模拟(容量:2)...")
-	lru := Constructor(2)
-
-	fmt.Println("\n1. 插入(1,1)")
-	lru.Put(1,1)
-	lru.printList()
-
-	fmt.Println("\n2. 插入(2,2)")
-	lru.Put(2,2)
-	lru.printList()
-
-	fmt.Println("\n3. 获取Key 1(同时让1变为最新)")
-	val := lru.Get(1)
-	fmt.Println("Get(1) = %d\n", val)
-	lru.printList()
-
-	fmt.Println("\n4. 插入 (3, 3) -> 此时容量满，因为 1 刚被用过，2 是最旧的，应该淘汰 2")
-	lru.Put(3, 3)
-	lru.printList()
-
-	fmt.Println("\n5. 获取已经淘汰的 Key 2")
-	val2 := lru.Get(2)
-	fmt.Printf("Get(2) = %d (期待 -1)\n", val2)
 }

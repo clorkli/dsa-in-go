@@ -1,30 +1,15 @@
 package algo
 
 import (
-	"fmt"
 	"math/rand"
-	"time"
+	"fmt"
 )
 
-func main() {
-	rand.Seed(time.Now().UnixNano())
-
-	arr := []int{3, 7, 2, 9, 1, 5, 8, 4, 6, 0}
-	fmt.Println("原始数组：", arr)
-
-	QuickSort(arr)
-
-	fmt.Println("排序结果：", arr)
-
-	//验证有序性
-	if isSorted(arr) {
-		fmt.Println("√ 验证通过：数组有序！")
-	} else {
-		fmt.Println("× 验证失败：数组无序！")
-	}
-}
-
 func QuickSort(arr []int) {
+	if len(arr) <= 1 {
+		return
+	}
+
 	quickSortHelper(arr, 0, len(arr)-1)
 }
 
